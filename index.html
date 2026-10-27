@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For My Favorite Person ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at top, #68154d, transparent 45%),
+                linear-gradient(135deg, #120016, #350024, #150019);
+
+            color: white;
+        }
+
+        /* Floating Hearts */
+
+        .hearts span {
+            position: absolute;
+            bottom: -60px;
+            font-size: 25px;
+            animation: float 9s linear infinite;
+            opacity: 0.7;
+        }
+
+        .hearts span:nth-child(1) {
+            left: 5%;
+            animation-delay: 1s;
+        }
+
+        .hearts span:nth-child(2) {
+            left: 20%;
+            animation-delay: 3s;
+        }
+
+        .hearts span:nth-child(3) {
+            left: 40%;
+            animation-delay: 0s;
+        }
+
+        .hearts span:nth-child(4) {
+            left: 65%;
+            animation-delay: 2s;
+        }
+
+        .hearts span:nth-child(5) {
+            left: 85%;
+            animation-delay: 4s;
+        }
+
+        .hearts span:nth-child(6) {
+            left: 50%;
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Main Card */
+
+        .card {
+            width: 90%;
+            max-width: 520px;
+            max-height: 95vh;
+
+            padding: 35px 30px;
+
+            text-align: center;
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 255, 255, 0.20);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5);
+
+            z-index: 5;
+
+            animation: cardAppear 1.5s ease;
+
+            overflow-y: auto;
+        }
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Heart */
+
+        .main-heart {
+            font-size: 70px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            margin-top: 10px;
+            font-size: 32px;
+
+            background:
+                linear-gradient(90deg, #ff9dcc, #ffffff, #ff9dcc);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            color: #ffc9e4;
+            font-size: 15px;
+        }
+
+        .message {
+            margin-top: 25px;
+            line-height: 1.8;
+            color: #ffe8f4;
+            font-size: 16px;
+        }
+
+        /* Highlight */
+
+        .highlight {
+            margin: 25px 0;
+            padding: 18px;
+
+            border-radius: 18px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            color: #ffb7d8;
+
+            font-weight: bold;
+
+            box-shadow:
+                inset 0 0 20px rgba(255, 100, 170, 0.08);
+        }
+
+        /* Buttons */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        button {
+            border: none;
+
+            padding: 13px 22px;
+
+            border-radius: 30px;
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(45deg, #ff3f91, #ff82b7);
+
+            box-shadow:
+                0 8px 25px rgba(255, 63, 145, 0.35);
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 10px 30px rgba(255, 63, 145, 0.55);
+        }
+
+        /* YouTube Player */
+
+        #youtubePlayer {
+            display: none;
+            margin-top: 22px;
+
+            animation: messageAppear 0.8s ease;
+        }
+
+        .video-box {
+            position: relative;
+            width: 100%;
+
+            padding-bottom: 56.25%;
+
+            height: 0;
+
+            overflow: hidden;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.5);
+
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .video-box iframe {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border: none;
+        }
+
+        #musicStatus {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #ffb6d8;
+        }
+
+        /* Final Message */
+
+        #finalMessage {
+            display: none;
+
+            margin-top: 25px;
+
+            animation: messageAppear 1s ease;
+        }
+
+        @keyframes messageAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #finalMessage h2 {
+            color: #ffacd2;
+            margin-bottom: 10px;
+        }
+
+        #finalMessage p {
+            line-height: 1.7;
+            color: #ffe6f2;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 500px) {
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .main-heart {
+                font-size: 60px;
+            }
+
+            .message {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Floating Hearts -->
+
+    <div class="hearts">
+
+        <span>❤️</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>💖</span>
+        <span>💘</span>
+        <span>❤️</span>
+
+    </div>
+
+
+    <!-- Main Card -->
+
+    <div class="card">
+
+
+        <div class="main-heart">
+            ❤️
+        </div>
+
+
+        <h1>
+            Hey You...
+        </h1>
+
+
+        <div class="subtitle">
+            This little page is just for you 💌
+        </div>
+
+
+        <div class="message">
+
+            I know things didn't go the way
+            they were supposed to.
+
+            <br><br>
+
+            Maybe my words or actions
+            made your heart a little heavy.
+
+        </div>
+
+
+        <div class="highlight">
+
+            You are much more important to me
+            than my ego ever could be. 🥺❤️
+
+        </div>
+
+
+        <div class="message">
+
+            I don't want one little moment
+            to create a distance between us.
+
+            <br><br>
+
+            I want our silly talks,
+            our random fights,
+            our laughter,
+            and all those little moments
+            that make us... <b>US</b>. 🫶
+
+        </div>
+
+
+        <!-- Buttons -->
+
+        <div class="buttons">
+
+            <button onclick="showMessage()">
+                💌 Open My Heart
+            </button>
+
+
+            <button onclick="showSong()" id="musicBtn">
+                🎵 Play Our Song
+            </button>
+
+        </div>
+
+
+        <div id="musicStatus">
+            🎶 A song is waiting for you...
+        </div>
+
+
+        <!-- YouTube Song -->
+
+        <div id="youtubePlayer">
+
+            <div class="video-box">
+
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/6SGRn9OHtFY"
+                    title="Agar Tum Saath Ho"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+
+        <!-- Final Message -->
+
+        <div id="finalMessage">
+
+            <h2>
+                One Little Question... ❤️
+            </h2>
+
+            <p>
+
+                Can we leave the bad moment behind
+                and start again?
+
+                <br><br>
+
+                Because honestly...
+
+                <br>
+
+                A day feels incomplete
+                when your smile isn't part of it. 🥺
+
+                <br><br>
+
+                <b>
+                    Same two people.
+                    Same crazy bond.
+                    Just a fresh beginning. ❤️
+                </b>
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        /* Open Heart */
+
+        function showMessage() {
+
+            document.getElementById("finalMessage").style.display = "block";
+
+        }
+
+
+        /* YouTube Song */
+
+        function showSong() {
+
+            const player =
+                document.getElementById("youtubePlayer");
+
+            const button =
+                document.getElementById("musicBtn");
+
+            const status =
+                document.getElementById("musicStatus");
+
+
+            if (player.style.display === "block") {
+
+                player.style.display = "none";
+
+                button.innerHTML =
+                    "🎵 Play Our Song";
+
+                status.innerHTML =
+                    "🎶 A song is waiting for you...";
+
+            }
+
+            else {
+
+                player.style.display = "block";
+
+                button.innerHTML =
+                    "❤️ Hide Our Song";
+
+                status.innerHTML =
+                    "🎶 Agar Tum Saath Ho — just for you ❤️";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
